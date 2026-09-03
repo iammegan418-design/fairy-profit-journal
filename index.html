@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>仙女獲利手帳</title>
+<meta name="description" content="記錄每一筆努力，看見自己的豐盛。仙女團隊專屬獲利手帳。">
+<meta name="theme-color" content="#FBF8F5">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="仙女獲利手帳">
+<meta name="application-name" content="仙女獲利手帳">
+<link rel="apple-touch-icon" sizes="180x180" href="./icons/icon-180.png">
+<link rel="apple-touch-icon" href="./icons/icon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png" id="icon192">
+<link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png" id="icon512">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./src/styles.css">
+</head>
+<body>
+
+<div class="wrap">
+
+<!-- ================= 歡迎頁 ================= -->
+<section id="welcome" class="screen">
+  <div class="hero">
+    <img class="logo-lg" src="./icons/logo-lg.png" alt="仙女獲利手帳">
+    <p class="logo-tagline">記錄每一筆努力 · 看見自己的豐盛</p>
+    <h1>嗨，親愛的仙女 ✨</h1>
+    <p>有些成長，不是一天就看得見。<br>
+       但當你願意把每一次成交、每一筆獲利記錄下來，<br>
+       一個月、半年、一年後回頭看，<br>
+       你會發現自己已經走了很遠。</p>
+    <p class="sig">這裡，是屬於你的獲利手帳。</p>
+    <p>記錄的不是壓力，<br>而是你一步一步創造出來的成果。</p>
+    <div class="hero-cta">
+      <button class="btn btn-main" id="goSetup">開始我的獲利紀錄 ✨</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 建立手帳 ================= -->
+<section id="setup" class="screen">
+  <div class="topbar"><span class="brand"><img src="./icons/logo-sm.png" alt="">仙女獲利手帳</span></div>
+  <div class="card">
+    <h2 style="font-size:20px;font-weight:700;margin-bottom:6px">怎麼稱呼你？</h2>
+    <p class="hint" style="margin-bottom:20px">讓這本獲利手帳記住你。不需要帳號、Email 或密碼。</p>
+    <div class="field">
+      <label class="label" for="nameInput">你的名字／暱稱</label>
+      <input class="input" id="nameInput" type="text" placeholder="例如：巧穎" maxlength="12" autocomplete="off">
+    </div>
+    <button class="btn btn-main" id="createBook">建立我的獲利手帳</button>
+  </div>
+</section>
+
+<!-- ================= 首頁 ================= -->
+<section id="home" class="screen">
+  <div class="topbar">
+    <span class="brand"><img src="./icons/logo-sm.png" alt="">仙女獲利手帳</span>
+    <a class="gearlink" data-go="settings">設定與備份</a>
+  </div>
+
+  <h2 class="greet" id="greetName">歡迎回來 ♡</h2>
+  <p class="greet-sub">今天，也記下一點自己的累積吧。</p>
+
+  <div class="hero-card">
+    <div class="cap" id="homeMonthCap">本月獲利</div>
+    <div class="bignum" id="homeProfit"><span class="cur">NT$</span>0</div>
+    <div class="pair">
+      <div><div class="k">本月銷售</div><div class="v" id="homeSale">NT$ 0</div></div>
+      <div><div class="k">本月成本</div><div class="v" id="homeCost">NT$ 0</div></div>
+    </div>
+  </div>
+
+  <div class="home-cta">
+    <button class="btn btn-main" id="goEntry">＋ 記錄今天的銷售</button>
+  </div>
+  <div class="center"><a class="link" data-go="month">查看我的獲利紀錄</a></div>
+
+  <div class="card" style="margin-top:18px">
+    <div class="section-title" id="homeTrendTitle">本月獲利趨勢</div>
+    <div class="chart-wrap" id="homeChart"></div>
+  </div>
+
+  <div class="card">
+    <div class="section-title" id="homeYearTitle">今年累積獲利</div>
+    <div class="bignum" id="homeYearProfit" style="font-size:30px"><span class="cur">NT$</span>0</div>
+    <div style="margin-top:8px"><a class="link" data-go="year">查看年度紀錄 →</a></div>
+  </div>
+
+  <div class="card">
+    <div class="section-title">從開始記錄至今</div>
+    <div class="stat-line"><span class="k">累積獲利</span><span class="v gold" id="allProfit">NT$ 0</span></div>
+    <div class="stat-line"><span class="k">累積銷售</span><span class="v" id="allSale">NT$ 0</span></div>
+    <div class="stat-line"><span class="k">累積成本</span><span class="v" id="allCost">NT$ 0</span></div>
+    <div class="stat-line"><span class="k">已記錄</span><span class="v" id="allCount">0 筆</span></div>
+    <p class="hint" id="sinceLine" style="margin-top:12px"></p>
+  </div>
+</section>
+
+<!-- ================= 新增／編輯 ================= -->
+<section id="entry" class="screen">
+  <div class="topbar"><span class="brand"><img src="./icons/logo-sm.png" alt="">仙女獲利手帳</span></div>
+  <a class="backlink" data-go="home">← 回首頁</a>
+  <div class="card" style="margin-top:8px">
+    <h2 style="font-size:20px;font-weight:700;margin-bottom:18px" id="entryTitle">記錄今天的成果</h2>
+
+    <div class="field">
+      <label class="label" for="fDate">日期</label>
+      <input class="input" id="fDate" type="date">
+    </div>
+
+    <div class="field">
+      <label class="label" for="fSale">今天銷售金額</label>
+      <div class="money-field">
+        <span class="unit">NT$</span>
+        <input class="input" id="fSale" type="number" inputmode="decimal" min="0" step="1" placeholder="0">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label" for="fCost">今天的成本</label>
+      <div class="money-field">
+        <span class="unit">NT$</span>
+        <input class="input" id="fCost" type="number" inputmode="decimal" min="0" step="1" placeholder="0">
+      </div>
+    </div>
+
+    <div class="calc idle" id="calcBox">
+      <div class="cap">✨ 今天獲利</div>
+      <div class="num" id="calcNum">NT$ 0</div>
+    </div>
+
+    <button class="more-toggle" id="moreToggle">＋ 補充資料（選填）</button>
+    <div class="more" id="moreBox">
+      <div class="field">
+        <label class="label" for="fCustomer">客人／對象</label>
+        <input class="input" id="fCustomer" type="text" maxlength="30" autocomplete="off">
+      </div>
+      <div class="field">
+        <label class="label" for="fItem">商品／品項</label>
+        <input class="input" id="fItem" type="text" maxlength="30" autocomplete="off">
+      </div>
+      <div class="field">
+        <label class="label" for="fNote">備註</label>
+        <input class="input" id="fNote" type="text" maxlength="60" placeholder="例如：轉帳、分期、體驗價" autocomplete="off">
+      </div>
+    </div>
+
+    <button class="btn btn-main" id="saveRec">儲存今天的成果</button>
+    <button class="danger" id="delRec" style="display:none">刪除這筆紀錄</button>
+  </div>
+</section>
+
+<!-- ================= 月度獲利 ================= -->
+<section id="month" class="screen">
+  <div class="topbar"><span class="brand"><img src="./icons/logo-sm.png" alt="">仙女獲利手帳</span></div>
+  <a class="backlink" data-go="home">← 回首頁</a>
+
+  <div class="switcher">
+    <button id="mPrev" aria-label="上個月">〈</button>
+    <span class="now" id="mLabel">2026 年 9 月</span>
+    <button id="mNext" aria-label="下個月">〉</button>
+  </div>
+
+  <div class="hero-card">
+    <div class="cap" id="mOverviewCap">本月總覽</div>
+    <div class="bignum" id="mProfit"><span class="cur">NT$</span>0</div>
+    <div class="pair">
+      <div><div class="k">總銷售</div><div class="v" id="mSale">NT$ 0</div></div>
+      <div><div class="k">總成本</div><div class="v" id="mCost">NT$ 0</div></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <div class="section-title">每日獲利曲線</div>
+    <div class="chart-wrap" id="mChart"></div>
+  </div>
+
+  <div class="section-title" style="margin:26px 0 2px">每日紀錄</div>
+  <div id="mList"></div>
+</section>
+
+<!-- ================= 年度獲利 ================= -->
+<section id="year" class="screen">
+  <div class="topbar"><span class="brand"><img src="./icons/logo-sm.png" alt="">仙女獲利手帳</span></div>
+  <a class="backlink" data-go="home">← 回首頁</a>
+
+  <div class="yearpick" id="yPick"></div>
+
+  <div class="hero-card">
+    <div class="cap" id="yCap">年度總獲利</div>
+    <div class="bignum" id="yProfit"><span class="cur">NT$</span>0</div>
+    <div class="pair">
+      <div><div class="k">年度銷售</div><div class="v" id="ySale">NT$ 0</div></div>
+      <div><div class="k">年度成本</div><div class="v" id="yCost">NT$ 0</div></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <div class="section-title">1～12 月獲利曲線</div>
+    <div class="chart-wrap" id="yChart"></div>
+  </div>
+
+  <div class="card">
+    <div class="section-title">每月明細</div>
+    <div id="yList"></div>
+  </div>
+</section>
+
+<!-- ================= 設定與備份 ================= -->
+<section id="settings" class="screen">
+  <div class="topbar"><span class="brand"><img src="./icons/logo-sm.png" alt="">仙女獲利手帳</span></div>
+  <a class="backlink" data-go="home">← 回首頁</a>
+
+  <div class="card" style="margin-top:8px">
+    <div class="section-title">這本手帳的主人</div>
+    <div class="field">
+      <input class="input" id="editName" type="text" maxlength="12">
+    </div>
+    <button class="btn btn-soft" id="saveName">更新名字</button>
+  </div>
+
+  <div class="card">
+    <div class="section-title">備份我的紀錄</div>
+    <p class="hint" style="margin-bottom:16px">紀錄目前存在這台裝置的瀏覽器裡。換手機或清除瀏覽器資料前，記得先匯出備份檔保存起來。</p>
+    <button class="btn btn-soft" id="doExport">匯出備份檔</button>
+    <div style="height:10px"></div>
+    <button class="btn btn-ghost" id="doImport">匯入備份檔</button>
+    <input type="file" id="importFile" accept="application/json,.json" style="display:none">
+    <p class="hint" id="lastBackup" style="margin-top:14px"></p>
+  </div>
+
+  <div class="card">
+    <div class="section-title">重新開始</div>
+    <p class="hint">清除這台裝置上的所有紀錄，且無法復原。建議先匯出備份。</p>
+    <button class="danger" id="wipeAll">清除全部紀錄</button>
+  </div>
+</section>
+
+<div class="foot">
+  仙女團隊專屬資源｜巧穎開發 ✨<br>
+  <span class="en">Fairy Team · Created by 巧穎</span>
+</div>
+
+</div>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
